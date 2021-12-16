@@ -8,6 +8,32 @@
         "env": []
     },
     {
+        "id": "2416549b999b3411",
+        "type": "mqtt-broker",
+        "name": "mosquitto.doesliverpool",
+        "broker": "10.0.100.1",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
         "id": "dfbbf398d4b7a905",
         "type": "inject",
         "z": "1eb3b998484afdb2",
@@ -28,7 +54,7 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 250,
+        "x": 260,
         "y": 140,
         "wires": [
             [
@@ -51,8 +77,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 570,
-        "y": 100,
+        "x": 490,
+        "y": 40,
         "wires": []
     },
     {
@@ -67,8 +93,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 530,
-        "y": 140,
+        "x": 490,
+        "y": 120,
         "wires": []
     },
     {
@@ -99,24 +125,29 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 450,
-        "y": 220,
+        "x": 490,
+        "y": 280,
         "wires": []
     },
     {
-        "id": "bd3701578dfdcabc",
-        "type": "influxdb in",
+        "id": "c473abf39b500d02",
+        "type": "mqtt in",
         "z": "1eb3b998484afdb2",
         "name": "",
-        "query": "",
-        "rawOutput": false,
-        "precision": "",
-        "retentionPolicy": "",
-        "org": "organisation",
-        "x": 270,
-        "y": 320,
+        "topic": "esp8266/75D1F3/message",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "2416549b999b3411",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 320,
+        "y": 440,
         "wires": [
-            []
+            [
+                "124c2646045dc98d"
+            ]
         ]
     }
 ]
