@@ -67,8 +67,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 540,
-        "y": 200,
+        "x": 530,
+        "y": 140,
         "wires": []
     },
     {
@@ -83,8 +83,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 520,
-        "y": 280,
+        "x": 490,
+        "y": 180,
         "wires": []
     },
     {
@@ -99,8 +99,24 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 520,
-        "y": 380,
+        "x": 450,
+        "y": 220,
         "wires": []
+    },
+    {
+        "id": "bd3701578dfdcabc",
+        "type": "influxdb in",
+        "z": "1eb3b998484afdb2",
+        "name": "",
+        "query": "",
+        "rawOutput": false,
+        "precision": "",
+        "retentionPolicy": "",
+        "org": "organisation",
+        "x": 270,
+        "y": 320,
+        "wires": [
+            []
+        ]
     }
 ]
