@@ -42,102 +42,6 @@
         "sessionExpiry": ""
     },
     {
-        "id": "dfbbf398d4b7a905",
-        "type": "inject",
-        "z": "1eb3b998484afdb2",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 260,
-        "y": 140,
-        "wires": [
-            [
-                "5e50adc97da1dc21",
-                "3fd9ed98bae4f190",
-                "f4c8628a905f2bef",
-                "124c2646045dc98d"
-            ]
-        ]
-    },
-    {
-        "id": "5e50adc97da1dc21",
-        "type": "debug",
-        "z": "1eb3b998484afdb2",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 490,
-        "y": 40,
-        "wires": []
-    },
-    {
-        "id": "3fd9ed98bae4f190",
-        "type": "debug",
-        "z": "1eb3b998484afdb2",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 490,
-        "y": 120,
-        "wires": []
-    },
-    {
-        "id": "f4c8628a905f2bef",
-        "type": "debug",
-        "z": "1eb3b998484afdb2",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 490,
-        "y": 180,
-        "wires": []
-    },
-    {
-        "id": "124c2646045dc98d",
-        "type": "debug",
-        "z": "1eb3b998484afdb2",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 490,
-        "y": 280,
-        "wires": []
-    },
-    {
         "id": "c473abf39b500d02",
         "type": "mqtt in",
         "z": "1eb3b998484afdb2",
@@ -150,11 +54,139 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 250,
-        "y": 240,
+        "x": 190,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a3532a7a4c72bf1f",
+        "type": "http request",
+        "z": "1eb3b998484afdb2",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.github.com/repos/goatchurchprime/tunnelvr_cave_data/contents/cavedata/firstarea/testnewfile.res",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 350,
+        "y": 420,
         "wires": [
             [
-                "124c2646045dc98d"
+                "508dc8e9d088c238"
+            ]
+        ]
+    },
+    {
+        "id": "cb1dfcde.fd153",
+        "type": "function",
+        "z": "1eb3b998484afdb2",
+        "name": "set payload and headers",
+        "func": "msg.payload = \"\";\nmsg.headers = {};\nmsg.headers[\"Accept\"] = \"application/vnd.github.v3+json\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 150,
+        "y": 420,
+        "wires": [
+            [
+                "a3532a7a4c72bf1f"
+            ]
+        ]
+    },
+    {
+        "id": "dcf34aab.218928",
+        "type": "inject",
+        "z": "1eb3b998484afdb2",
+        "name": "",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 380,
+        "wires": [
+            [
+                "cb1dfcde.fd153"
+            ]
+        ]
+    },
+    {
+        "id": "ee306582.f0dde8",
+        "type": "debug",
+        "z": "1eb3b998484afdb2",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 430,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "508dc8e9d088c238",
+        "type": "json",
+        "z": "1eb3b998484afdb2",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 350,
+        "y": 460,
+        "wires": [
+            [
+                "a2a7b12833919f82"
+            ]
+        ]
+    },
+    {
+        "id": "a2a7b12833919f82",
+        "type": "change",
+        "z": "1eb3b998484afdb2",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.content",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 460,
+        "wires": [
+            [
+                "937efc70c64ec3c4"
+            ]
+        ]
+    },
+    {
+        "id": "937efc70c64ec3c4",
+        "type": "base64",
+        "z": "1eb3b998484afdb2",
+        "name": "",
+        "action": "b64",
+        "property": "payload",
+        "x": 660,
+        "y": 460,
+        "wires": [
+            [
+                "ee306582.f0dde8"
             ]
         ]
     },
